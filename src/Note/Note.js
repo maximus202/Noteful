@@ -1,30 +1,33 @@
 import React from 'react';
 import Header from '../Header/Header';
-import NOTES from '../NOTES/NOTES';
+import GenerateNote from '../GenerateNote/GenerateNote';
+import { withRouter } from 'react-router';
 
 class Note extends React.Component {
     render() {
         const noteId = this.props.match.params.noteId;
-        const selectedNote = NOTES.notes.filter(note => note.id === noteId)
-        console.log(selectedNote);
-        return /*(
+        const selectedNote = this.props.storedNotes.NOTES.notes.filter(note => note.id === noteId);
+        const selectedNoteFolderId = selectedNote[0].folderId;
+        const selectedNoteFolder = this.props.storedNotes.NOTES.folders.filter(folder => folder.id === selectedNoteFolderId);
+        return (
             <>
-            <header>
-                <Header />
-            </header>
+                <header>
+                    <Header />
+                </header>
                 <main>
-                    <h2>{selectedNote[0].name}</h2>
-                    <p>Date modified: {selectedNote[0].modified}</p>
-                    <p>{selectedNote[0].content}</p>
+                    <GenerateNote selectedNote={selectedNote} />
                 </main>
                 <aside>
                     <button onClick={this.props.onClickGoBack}>
                         Go back
                     </button>
+                    <div>
+                        Folder: {selectedNoteFolder[0].name}
+                    </div>
                 </aside>
             </>
-        )*/
+        )
     }
 }
 
-export default Note;
+export default withRouter(Note);

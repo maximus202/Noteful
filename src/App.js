@@ -31,14 +31,16 @@ class App extends React.Component {
         />
         <Route
           exact path='/folder/:folderId'
-          //component={Folder}
           render={(routerProps) =>
             < Folder
               storedNotes={this.state.storedNotes}
               handleSetCurrentFolder={(folderId) => this.setState.setCurrentFolder}
             />}
         />
-        <Route exact path='/note/:noteId' component={Note} render={({ history }) => { return <Note onClickGoBack={() => history.goBack()} /> }} />
+        <Route exact path='/note/:noteId'
+          render={({ history }) => {
+            return <Note storedNotes={this.state.storedNotes} onClickGoBack={() => history.goBack()} />
+          }} />
       </>
     )
   }
