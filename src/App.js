@@ -14,12 +14,6 @@ class App extends React.Component {
     };
   }
 
-  setCurrentFolder(folderId) {
-    this.setState = {
-      currentFolderId: folderId
-    }
-  }
-
   render() {
     return (
       <>
@@ -34,7 +28,6 @@ class App extends React.Component {
           render={(routerProps) =>
             < Folder
               storedNotes={this.state.storedNotes}
-              handleSetCurrentFolder={(folderId) => this.setState.setCurrentFolder}
             />}
         />
         <Route exact path='/note/:noteId'

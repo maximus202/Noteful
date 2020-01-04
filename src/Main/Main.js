@@ -7,31 +7,39 @@ import GenerateNoteList from '../GenerateNoteList/GenerateNoteList';
 import AddNote from '../AddNote/AddNote';
 import GenerateFolderMenu from '../GenerateFolderMenu/GenerateFolderMenu';
 import AddFolder from '../AddFolder/AddFolder';
+import NoteContext from '../NoteContext/NoteContext';
 
 class Main extends React.Component {
     render() {
         return (
-            <>
-                <header>
-                    <Header />
-                </header>
-                <main>
-                    {this.props.storedNotes.NOTES.notes.map(note =>
-                        < GenerateNoteList
-                            note={note}
-                            key={note.id} />
-                    )}
-                    <AddNote />
-                </main>
-                <aside>
-                    {this.props.storedNotes.NOTES.folders.map(folder =>
-                        <GenerateFolderMenu
-                            folder={folder}
-                            key={folder.id} />
-                    )}
-                    <AddFolder />
-                </aside>
-            </>
+            <NoteContext.Consumer>
+                {(value) => {
+                    console.log(value)
+                    return (
+                        <>
+                            <header>
+                                <Header />
+                            </header>
+                            <main>
+                                {value.storedNotes.NOTES.notes.map(note =>
+                                    < GenerateNoteList
+                                        note={note}
+                                        key={note.id} />
+                                )}
+                                <AddNote />
+                            </main>
+                            <aside>
+                                {value.storedNotes.NOTES.folders.map(folder =>
+                                    <GenerateFolderMenu
+                                        folder={folder}
+                                        key={folder.id} />
+                                )}
+                                <AddFolder />
+                            </aside>
+                        </>
+                    )
+                }}
+            </NoteContext.Consumer>
         )
     }
 }
