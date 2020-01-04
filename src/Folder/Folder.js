@@ -3,38 +3,57 @@ import Header from '../Header/Header';
 import NOTES from '../NOTES/NOTES';
 import { Link } from 'react-router-dom';
 import './Folder.css';
+import GenerateFolderMenu from '../GenerateFolderMenu/GenerateFolderMenu';
+import AddNote from '../AddNote/AddNote';
+import GenerateNoteList from '../GenerateNoteList/GenerateNoteList';
+import { withRouter } from 'react-router';
 
 class Folder extends React.Component {
+    //static propTypes = {
+    //  match: this.propTypes.object.isRequired
+    //}
     render() {
-        const folderId = this.props.match.params.folderId;
-        const folderContent = NOTES.notes.filter(note => note.folderId === folderId);
-        console.log(folderId);
-        console.log(folderContent);
+        const { match } = this.props;
         return (
-            <div>
+            <>
+                {console.log(match)}
+            </>
+        )
+    }
+}
+
+const showMatch = withRouter(Folder);
+
+/*class Folder extends React.Component {
+    render() {
+        const folderId = withRouter(this.props.match.params.folderId);
+        console.log(folderId);
+        console.log(NOTES.folders.find(folderId));
+        return (
+            <>
                 <header>
                     <Header />
                 </header>
                 <main>
-                    {folderContent.map(note =>
-                        <div key={note.id}>
-                            <p><Link to={`/Note/${note.id}`}>{note.name}</Link></p>
-                            <p>Last modified on: {note.modified}</p>
-                        </div>
+                    {this.props.storedNotes.map(note =>
+                        < GenerateNoteList
+                            note={note}
+                            key={note.id} />
                     )}
                 </main>
                 <aside>
-                    {NOTES.folders.map(folder =>
-                        <div key={folder.id}>
-                            <button className='folder_button'>
-                                <Link to={`/folder/${folder.id}`}>{folder.name}</Link>
-                            </button>
-                        </div>
+                    {this.props.storedNotes.map(folder =>
+                        <GenerateFolderMenu
+                            folder={folder}
+                            key={folder.id}
+                            handleSetCurrentFolder={this.props.setCurrentFolder}
+                        />
                     )}
                 </aside>
-            </div>
+            </>
         )
     }
 }
+*/
 
 export default Folder;

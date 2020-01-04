@@ -3,32 +3,35 @@ import Header from '../Header/Header';
 import NOTES from '../NOTES/NOTES';
 import { Link } from 'react-router-dom';
 import '../Main/Main.css';
+import GenerateNoteList from '../GenerateNoteList/GenerateNoteList';
+import AddNote from '../AddNote/AddNote';
+import GenerateFolderMenu from '../GenerateFolderMenu/GenerateFolderMenu';
+import AddFolder from '../AddFolder/AddFolder';
 
 class Main extends React.Component {
     render() {
         return (
-            <div>
+            <>
                 <header>
                     <Header />
                 </header>
                 <main>
-                    {NOTES.notes.map(note =>
-                        <div key={note.id}>
-                            <p><Link to={`/note/${note.id}`}>{note.name}</Link></p>
-                            <p>Last modified on: {note.modified}</p>
-                        </div>
+                    {this.props.storedNotes.NOTES.notes.map(note =>
+                        < GenerateNoteList
+                            note={note}
+                            key={note.id} />
                     )}
+                    <AddNote />
                 </main>
                 <aside>
-                    {NOTES.folders.map(folder =>
-                        <div key={folder.id}>
-                            <button className='folder_button'>
-                                <Link to={`/folder/${folder.id}`}>{folder.name}</Link>
-                            </button>
-                        </div>
+                    {this.props.storedNotes.NOTES.folders.map(folder =>
+                        <GenerateFolderMenu
+                            folder={folder}
+                            key={folder.id} />
                     )}
+                    <AddFolder />
                 </aside>
-            </div>
+            </>
         )
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import Main from './Main/Main';
 import { Route } from 'react-router-dom';
 import NOTES from './NOTES/NOTES';
+import Main from './Main/Main';
 import Folder from './Folder/Folder';
 import Note from './Note/Note';
 
@@ -9,19 +9,37 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      notes: { NOTES }
+      storedNotes: { NOTES },
+      currentFolderId: []
     };
+  }
+
+  setCurrentFolder(folderId) {
+    this.setState = {
+      currentFolderId: folderId
+    }
   }
 
   render() {
     return (
-      <div>
-        <main>
-          <Route exact path='/' component={Main} />
-          <Route exact path='/folder/:folderId' component={Folder} />
-          <Route exact path='/note/:noteId' component={Note} render={({ history }) => { return <Note onClickGoBack={() => history.goBack()} /> }} />
-        </main>
-      </div>
+      <>
+        <Route
+          exact path='/'
+          render={(routerProps) =>
+            <Main
+              storedNotes={this.state.storedNotes} />}
+        />
+        <Route
+          exact path='/folder/:folderId'
+          //component={Folder}
+          render={(routerProps) =>
+            < Folder
+              storedNotes={this.state.storedNotes}
+              handleSetCurrentFolder={(folderId) => this.setState.setCurrentFolder}
+            />}
+        />
+        <Route exact path='/note/:noteId' component={Note} render={({ history }) => { return <Note onClickGoBack={() => history.goBack()} /> }} />
+      </>
     )
   }
 }

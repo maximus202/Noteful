@@ -7,11 +7,11 @@ class Note extends React.Component {
         const noteId = this.props.match.params.noteId;
         const selectedNote = NOTES.notes.filter(note => note.id === noteId)
         console.log(selectedNote);
-        return (
-            <div>
-                <header>
-                    <Header />
-                </header>
+        return /*(
+            <>
+            <header>
+                <Header />
+            </header>
                 <main>
                     <h2>{selectedNote[0].name}</h2>
                     <p>Date modified: {selectedNote[0].modified}</p>
@@ -22,8 +22,8 @@ class Note extends React.Component {
                         Go back
                     </button>
                 </aside>
-            </div>
-        )
+            </>
+        )*/
     }
 }
 
