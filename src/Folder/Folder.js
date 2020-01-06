@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../Header/Header';
-import NOTES from '../NOTES/NOTES';
+//import NOTES from '../NOTES/NOTES';
 import { Link } from 'react-router-dom';
 import './Folder.css';
 import GenerateFolderMenu from '../GenerateFolderMenu/GenerateFolderMenu';
