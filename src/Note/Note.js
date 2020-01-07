@@ -6,6 +6,7 @@ import NoteContext from '../NoteContext/NoteContext';
 
 class Note extends React.Component {
     render() {
+        console.log('note')
         return (
             <NoteContext.Consumer>
                 {(value) => {

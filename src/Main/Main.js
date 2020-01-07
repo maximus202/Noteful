@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../Header/Header';
-//import NOTES from '../NOTES/NOTES';
+import NOTES from '../NOTES/NOTES';
 import { Link } from 'react-router-dom';
 import '../Main/Main.css';
 import GenerateNoteList from '../GenerateNoteList/GenerateNoteList';
@@ -11,6 +11,7 @@ import NoteContext from '../NoteContext/NoteContext';
 
 class Main extends React.Component {
     render() {
+        console.log('main')
         return (
             <NoteContext.Consumer>
                 {(value) => {

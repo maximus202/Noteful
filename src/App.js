@@ -17,31 +17,33 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('render')
     return (
       <>
-        <NoteContext data={this.state} />
         <Route
           exact path='/'
           render={(routerProps) =>
             <Main
-              storedNotes={this.state} />}
+            /*storedNotes={this.state}*/
+            />}
         />
         <Route
           exact path='/folder/:folderId'
           render={(routerProps) =>
             < Folder
-              storedNotes={this.state}
+            /*storedNotes={this.state}*/
             />}
         />
         <Route exact path='/note/:noteId'
           render={({ history }) => {
-            return <Note storedNotes={this.state} onClickGoBack={() => history.goBack()} />
+            return <Note /*storedNotes={this.state}*/ onClickGoBack={() => history.goBack()} />
           }} />
       </>
     )
   }
 
   componentDidMount() {
+    console.log('componentDidMount')
     fetch('http://localhost:9090/folders')
       .then((response) => {
         if (response.ok) {

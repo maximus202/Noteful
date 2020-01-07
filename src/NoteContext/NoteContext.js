@@ -1,7 +1,8 @@
 import React from 'react';
+import NOTES from '../NOTES/NOTES';
 
 const NoteContext = React.createContext({
-    NoteContext: this.props
+    storedNotes: { NOTES }
 })
 
 export default NoteContext;
