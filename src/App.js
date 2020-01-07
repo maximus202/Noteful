@@ -8,13 +8,13 @@ import { promised } from 'q';
 import NoteContext from './NoteContext/NoteContext';
 
 class App extends React.Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props)
     this.state = {
       folders: [],
       notes: []
     };
-  }
+  }*/
 
   render() {
     console.log('render')
