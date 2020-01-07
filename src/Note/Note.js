@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../Header/Header';
 import GenerateNote from '../GenerateNote/GenerateNote';
 import { withRouter } from 'react-router';
-import NoteContext from '../NoteContext/NoteContext';
+import { NoteContext } from '../NoteContext/NoteContext';
 
 class Note extends React.Component {
     render() {

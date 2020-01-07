@@ -8,7 +8,7 @@ import AddNote from '../AddNote/AddNote';
 import GenerateNoteList from '../GenerateNoteList/GenerateNoteList';
 import { withRouter } from 'react-router';
 import AddFolder from '../AddFolder/AddFolder';
-import NoteContext from '../NoteContext/NoteContext';
+import { NoteContext } from '../NoteContext/NoteContext';
 
 class Folder extends React.Component {
     render() {

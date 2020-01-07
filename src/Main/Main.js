@@ -7,7 +7,7 @@ import GenerateNoteList from '../GenerateNoteList/GenerateNoteList';
 import AddNote from '../AddNote/AddNote';
 import GenerateFolderMenu from '../GenerateFolderMenu/GenerateFolderMenu';
 import AddFolder from '../AddFolder/AddFolder';
-import NoteContext from '../NoteContext/NoteContext';
+import { NoteContext } from '../NoteContext/NoteContext';
 
 class Main extends React.Component {
     render() {
