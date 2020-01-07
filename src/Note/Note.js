@@ -6,14 +6,13 @@ import { NoteContext } from '../NoteContext/NoteContext';
 
 class Note extends React.Component {
     render() {
-        console.log('note')
         return (
             <NoteContext.Consumer>
                 {(value) => {
                     const noteId = this.props.match.params.noteId;
-                    const selectedNote = value.storedNotes.NOTES.notes.filter(note => note.id === noteId);
-                    const selectedNoteFolderId = selectedNote[0].folderId;
-                    const selectedNoteFolder = value.storedNotes.NOTES.folders.filter(folder => folder.id === selectedNoteFolderId);
+                    const selectedNote = value.notes.filter(note => note.id === noteId);
+                    const selectedNoteFolderId = value.notes[0].folderId;
+                    const selectedNoteFolder = value.folders.filter(folder => folder.id === selectedNoteFolderId);
                     return (
                         <>
                             <header>

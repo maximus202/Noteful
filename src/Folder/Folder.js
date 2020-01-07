@@ -1,7 +1,5 @@
 import React from 'react';
 import Header from '../Header/Header';
-import NOTES from '../NOTES/NOTES';
-import { Link } from 'react-router-dom';
 import './Folder.css';
 import GenerateFolderMenu from '../GenerateFolderMenu/GenerateFolderMenu';
 import AddNote from '../AddNote/AddNote';
@@ -12,9 +10,7 @@ import { NoteContext } from '../NoteContext/NoteContext';
 
 class Folder extends React.Component {
     render() {
-        console.log('folder')
         const folderId = this.props.match.params.folderId;
-        console.log(folderId);
         return (
             <NoteContext.Consumer>
                 {(value) => {
@@ -24,7 +20,7 @@ class Folder extends React.Component {
                                 <Header />
                             </header>
                             <main>
-                                {value.storedNotes.NOTES.notes.map(note => {
+                                {value.notes.map(note => {
                                     if (folderId === note.folderId) {
                                         return <GenerateNoteList note={note} key={note.id} />
                                     }
@@ -33,7 +29,7 @@ class Folder extends React.Component {
                                 <AddNote />
                             </main>
                             <aside>
-                                {value.storedNotes.NOTES.folders.map(folder =>
+                                {value.folders.map(folder =>
                                     <GenerateFolderMenu
                                         folder={folder}
                                         key={folder.id} />

@@ -1,26 +1,46 @@
 import React from 'react';
-import NOTES from '../NOTES/NOTES';
 
-export const NoteContext = React.createContext({
-    //storedNotes: { NOTES }
-})
+export const NoteContext = React.createContext()
 
 export class NoteProvider extends React.Component {
-    state = {
-        folders: [],
-        notes: []
+    constructor(props) {
+        super(props);
+        this.state = {
+            folders: [],
+            notes: []
+        }
     }
-    render() {
-        return (
-            <NoteContext.Provider value={{
-                state: this.state,
-                setFolders: (responseJson) => this.setState({
+
+    componentDidMount() {
+        fetch('http://localhost:9090/folders')
+            .then((response) => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    return response.json().then(responseJson => Promise.reject(new Error(responseJson)))
+                }
+            }).then(responseJson =>
+                this.setState({
                     folders: responseJson
-                }),
-                setNotes: (responseJson) => this.setState({
+                })
+            )
+
+            .then(() => fetch('http://localhost:9090/notes')).then((response) => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    return response.json().then(responseJson => Promise.reject(new Error(responseJson)))
+                }
+            }).then(responseJson =>
+                this.setState({
                     notes: responseJson
                 })
-            }}    >
+            )
+    }
+
+    render() {
+        return (
+            <NoteContext.Provider value={this.state}>
                 {this.props.children}
             </NoteContext.Provider >
         )
