@@ -7,7 +7,7 @@ export class NoteProvider extends React.Component {
         super(props);
         this.state = {
             folders: [],
-            notes: []
+            notes: [],
         }
     }
 
@@ -40,7 +40,17 @@ export class NoteProvider extends React.Component {
 
     render() {
         return (
-            <NoteContext.Provider value={this.state}>
+            < NoteContext.Provider value={{
+                folders: this.state.folders,
+                notes: this.state.notes,
+                handleDeleteNote: (noteId) => {
+                    const newNotes = this.state.notes.filter(note =>
+                        note.id !== noteId)
+                    this.setState({
+                        notes: newNotes
+                    })
+                }
+            }}>
                 {this.props.children}
             </NoteContext.Provider >
         )

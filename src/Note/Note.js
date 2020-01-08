@@ -11,8 +11,7 @@ class Note extends React.Component {
                 {(value) => {
                     const noteId = this.props.match.params.noteId;
                     const selectedNote = value.notes.filter(note => note.id === noteId);
-                    const selectedNoteFolderId = value.notes[0].folderId;
-                    const selectedNoteFolder = value.folders.filter(folder => folder.id === selectedNoteFolderId);
+                    const selectedNoteFolderId = selectedNote[0].id
                     return (
                         <>
                             <header>
@@ -26,7 +25,7 @@ class Note extends React.Component {
                                     Go back
                     </button>
                                 <div>
-                                    Folder: {selectedNoteFolder[0].name}
+                                    Folder: {value.folders.filter(folder => folder.id == selectedNote[0].folderId)[0].name}
                                 </div>
                             </aside>
                         </>
