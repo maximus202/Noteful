@@ -26,7 +26,9 @@ class Folder extends React.Component {
                                     }
                                 }
                                 )}
-                                <AddNote />
+                                <AddNote onClickAddNote={() => {
+                                    this.props.history.push('/addnote')
+                                }} />
                             </main>
                             <aside>
                                 {value.folders.map(folder =>

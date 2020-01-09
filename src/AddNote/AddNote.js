@@ -1,11 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
 class AddNote extends React.Component {
     render() {
         return (
-            <button>Add Note</button>
+            <button onClick={this.props.onClickAddNote}>Add Note</button>
         )
     }
 }
 
-export default AddNote;
+export default withRouter(AddNote);

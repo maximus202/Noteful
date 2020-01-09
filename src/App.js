@@ -6,6 +6,7 @@ import Note from './Note/Note';
 import { NoteProvider } from './NoteContext/NoteContext';
 import AddFolderForm from './AddFolder/AddFolderForm';
 import AddFolder from './AddFolder/AddFolder';
+import AddNoteForm from './AddNoteForm/AddNoteForm';
 
 class App extends React.Component {
   render() {
@@ -32,7 +33,12 @@ class App extends React.Component {
             render={({ history }) => {
               return <AddFolderForm onClickGoBack={() => history.goBack()} />
             }}>
-            {/*<AddFolderForm />*/}
+          </Route>
+          <Route
+            exact path='/addnote'
+            render={({ history }) => {
+              return <AddNoteForm onClickGoBack={() => history.goBack()} />
+            }}>
           </Route>
         </NoteProvider>
       </>

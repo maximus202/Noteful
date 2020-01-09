@@ -24,7 +24,10 @@ class Main extends React.Component {
                                         note={note}
                                         key={note.id} />
                                 )}
-                                <AddNote />
+                                <AddNote
+                                    onClickAddNote={() => {
+                                        this.props.history.push('/addnote')
+                                    }} />
                             </main>
                             <aside>
                                 {value.folders.map(folder =>
