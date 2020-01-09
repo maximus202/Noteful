@@ -6,7 +6,7 @@ import GenerateFolderRadioButton from '../GenerateFolderRadioButton/GenerateFold
 class AddNoteForm extends React.Component {
     constructor() {
         super()
-
+        this.noteNameInput = React.createRef();
         this.state = {
             name: '',
             folderId: '',
@@ -56,21 +56,25 @@ class AddNoteForm extends React.Component {
                                         <legend>Add Note</legend>
                                         <input type='text' placeholder='Note title' name='name' ref={this.nameInput} onChange={this.handleNameChange} required></input>
                                         <input type='text' placeholder='Write your note here' name='note' ref={this.contentInput} onChange={this.handleContentChange} required></input>
-                                        {value.folders.map(folder =>
-                                            <GenerateFolderRadioButton key={folder.id} folder={folder} />
-                                        )}
+                                        <label>Select a folder to save your note:</label>
+                                        {value.folders.map((folder) => {
+                                            console.log(folder.name)
+                                                < input type = 'radio' name = 'folder' id = { folder.name } value = { folder.name } ref = { this.noteNameInput } onChange = { this.handleFolderIdChange } ></input>
+                                    <label for={folder.name}>{folder.name}</label>
+                                    }
+                                    )}
                                         <input type='submit' value='Create'></input>
                                     </fieldset>
                                 </form>
-                            </main>
-                            <aside>
-                                <button type='button' onClick={this.props.onClickGoBack}>Go back</button>
-                            </aside>
+                        </main>
+                        <aside>
+                            <button type='button' onClick={this.props.onClickGoBack}>Go back</button>
+                        </aside>
                         </>
-                    )
-                }
-                }
-            </NoteContext.Consumer>
+        )
+    }
+}
+            </NoteContext.Consumer >
         )
     }
 }
