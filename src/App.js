@@ -4,6 +4,8 @@ import Main from './Main/Main';
 import Folder from './Folder/Folder';
 import Note from './Note/Note';
 import { NoteProvider } from './NoteContext/NoteContext';
+import AddFolderForm from './AddFolder/AddFolderForm';
+import AddFolder from './AddFolder/AddFolder';
 
 class App extends React.Component {
   render() {
@@ -12,8 +14,8 @@ class App extends React.Component {
         <NoteProvider>
           <Route
             exact path='/'
-            render={(routerProps) =>
-              <Main />}
+            render={({ history }) =>
+              <Main history={history} />}
           />
           <Route
             exact path='/folder/:folderId'
@@ -24,6 +26,9 @@ class App extends React.Component {
             render={({ history }) => {
               return <Note onClickGoBack={() => history.goBack()} />
             }} />
+          <Route exact path='/addfolder'>
+            <AddFolderForm />
+          </Route>
         </NoteProvider>
       </>
     )

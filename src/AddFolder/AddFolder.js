@@ -1,11 +1,13 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
 class AddFolder extends React.Component {
     render() {
+        console.log(this.props.onClickAddFolder)
         return (
-            <button>Add Folder</button>
+            <button onClick={this.props.onClickAddFolder}>Add Folder</button>
         )
     }
 }
 
-export default AddFolder;
+export default withRouter(AddFolder);

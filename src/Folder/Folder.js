@@ -34,7 +34,10 @@ class Folder extends React.Component {
                                         folder={folder}
                                         key={folder.id} />
                                 )}
-                                <AddFolder />
+                                <AddFolder onClickAddFolder={() => {
+                                    console.log('hello')
+                                    this.props.history.push('/addfolder')
+                                }} />
                             </aside>
                         </>
                     )

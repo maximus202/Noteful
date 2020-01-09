@@ -6,6 +6,7 @@ import AddNote from '../AddNote/AddNote';
 import GenerateFolderMenu from '../GenerateFolderMenu/GenerateFolderMenu';
 import AddFolder from '../AddFolder/AddFolder';
 import { NoteContext } from '../NoteContext/NoteContext';
+import { Route } from 'react-router-dom';
 
 class Main extends React.Component {
     render() {
@@ -31,7 +32,10 @@ class Main extends React.Component {
                                         folder={folder}
                                         key={folder.id} />
                                 )}
-                                <AddFolder />
+                                <AddFolder onClickAddFolder={() => {
+                                    console.log('hello')
+                                    this.props.history.push('/addfolder')
+                                }} />
                             </aside>
                         </>
                     )
