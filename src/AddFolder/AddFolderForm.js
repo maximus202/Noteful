@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 import { stringify } from 'querystring';
+import { withRouter } from 'react-router';
 
 class AddFolderForm extends React.Component {
     constructor() {
@@ -70,11 +71,11 @@ class AddFolderForm extends React.Component {
                     </form>
                 </main>
                 <aside>
-                    <button type='button'>Go back</button>
+                    <button type='button' onClick={this.props.onClickGoBack}>Go back</button>
                 </aside>
             </>
         )
     }
 }
 
-export default AddFolderForm;
+export default withRouter(AddFolderForm);

@@ -22,12 +22,17 @@ class App extends React.Component {
             render={(routerProps) =>
               < Folder />}
           />
-          <Route exact path='/note/:noteId'
+          <Route
+            exact path='/note/:noteId'
             render={({ history }) => {
               return <Note onClickGoBack={() => history.goBack()} />
             }} />
-          <Route exact path='/addfolder'>
-            <AddFolderForm />
+          <Route
+            exact path='/addfolder'
+            render={({ history }) => {
+              return <AddFolderForm onClickGoBack={() => history.goBack()} />
+            }}>
+            {/*<AddFolderForm />*/}
           </Route>
         </NoteProvider>
       </>
