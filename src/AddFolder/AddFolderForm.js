@@ -32,7 +32,6 @@ class AddFolderForm extends React.Component {
             },
             body: JSON.stringify(data),
             method: 'POST',
-            redirect: 'follow'
         };
 
         fetch(url, otherParams)
