@@ -58,22 +58,23 @@ class AddNoteForm extends React.Component {
                                         <input type='text' placeholder='Write your note here' name='note' ref={this.contentInput} onChange={this.handleContentChange} required></input>
                                         <label>Select a folder to save your note:</label>
                                         {value.folders.map((folder) => {
-                                            console.log(folder.name)
-                                                < input type = 'radio' name = 'folder' id = { folder.name } value = { folder.name } ref = { this.noteNameInput } onChange = { this.handleFolderIdChange } ></input>
-                                    <label for={folder.name}>{folder.name}</label>
-                                    }
-                                    )}
+                                            console.log(folder.name);
+                                            <div>
+                                                < input type='radio' name='folder' id={folder.name} value={folder.name} ref={this.noteNameInput} onChange={this.handleFolderIdChange} ></input>
+                                                <label for={folder.name}>{folder.name}</label>
+                                            </div>
+                                        })}
                                         <input type='submit' value='Create'></input>
                                     </fieldset>
                                 </form>
-                        </main>
-                        <aside>
-                            <button type='button' onClick={this.props.onClickGoBack}>Go back</button>
-                        </aside>
+                            </main>
+                            <aside>
+                                <button type='button' onClick={this.props.onClickGoBack}>Go back</button>
+                            </aside>
                         </>
-        )
-    }
-}
+                    )
+                }
+                }
             </NoteContext.Consumer >
         )
     }
