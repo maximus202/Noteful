@@ -7,6 +7,7 @@ import GenerateNoteList from '../GenerateNoteList/GenerateNoteList';
 import { withRouter } from 'react-router';
 import AddFolder from '../AddFolder/AddFolder';
 import { NoteContext } from '../NoteContext/NoteContext';
+import PropTypes from 'prop-types';
 
 class Folder extends React.Component {
     render() {
@@ -37,7 +38,6 @@ class Folder extends React.Component {
                                         key={folder.id} />
                                 )}
                                 <AddFolder onClickAddFolder={() => {
-                                    console.log('hello')
                                     this.props.history.push('/addfolder')
                                 }} />
                             </aside>
@@ -48,5 +48,10 @@ class Folder extends React.Component {
         )
     }
 }
+
+Folder.propTypes = {
+    match: PropTypes.object,
+    history: PropTypes.object
+};
 
 export default withRouter(Folder);

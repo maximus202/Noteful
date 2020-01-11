@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../Header/Header';
 import { NoteContext } from '../NoteContext/NoteContext';
+import PropTypes from 'prop-types';
+
 class AddNoteForm extends React.Component {
     constructor() {
         super()
@@ -113,6 +115,10 @@ class AddNoteForm extends React.Component {
             </NoteContext.Consumer >
         )
     }
+}
+
+AddNoteForm.propTypes = {
+    onClickGoBack: PropTypes.func
 }
 
 export default AddNoteForm;

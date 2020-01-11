@@ -5,7 +5,6 @@ import Folder from './Folder/Folder';
 import Note from './Note/Note';
 import { NoteProvider } from './NoteContext/NoteContext';
 import AddFolderForm from './AddFolder/AddFolderForm';
-import AddFolder from './AddFolder/AddFolder';
 import AddNoteForm from './AddNoteForm/AddNoteForm';
 
 class App extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
-import { stringify } from 'querystring';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 
 class AddFolderForm extends React.Component {
     constructor() {
@@ -75,6 +75,10 @@ class AddFolderForm extends React.Component {
             </>
         )
     }
+}
+
+AddFolderForm.propTypes = {
+    onClickGoBack: PropTypes.func
 }
 
 export default withRouter(AddFolderForm);

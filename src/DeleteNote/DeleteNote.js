@@ -1,11 +1,11 @@
 import React from 'react';
 import { NoteContext } from '../NoteContext/NoteContext';
+import PropTypes from 'prop-types';
 
 class DeleteNote extends React.Component {
     static contextType = NoteContext;
     handleClickDelete(event) {
         const noteId = this.props.note.id;
-        console.log(noteId)
         fetch(`http://localhost:9090/notes/${noteId}`, {
             method: 'DELETE',
             headers: {
@@ -33,6 +33,10 @@ class DeleteNote extends React.Component {
             </>
         )
     }
+}
+
+DeleteNote.propTypes = {
+    note: PropTypes.object
 }
 
 export default DeleteNote;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import DeleteNote from '../DeleteNote/DeleteNote';
+import PropTypes from 'prop-types';
 
 class GenerateNoteList extends React.Component {
     render() {
@@ -12,6 +13,10 @@ class GenerateNoteList extends React.Component {
             </div>
         )
     }
+}
+
+GenerateNoteList.propTypes = {
+    note: PropTypes.object
 }
 
 export default GenerateNoteList;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './GenerateFolderMenu.css';
+import PropTypes from 'prop-types';
 
 class GenerateFolderMenu extends React.Component {
     render() {
@@ -12,6 +13,10 @@ class GenerateFolderMenu extends React.Component {
             </>
         )
     }
+}
+
+GenerateFolderMenu.propTypes = {
+    folder: PropTypes.object
 }
 
 export default GenerateFolderMenu;

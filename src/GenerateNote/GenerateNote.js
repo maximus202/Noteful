@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class GenerateNote extends React.Component {
     render() {
@@ -11,6 +12,10 @@ class GenerateNote extends React.Component {
             </>
         )
     }
+}
+
+GenerateNote.propTypes = {
+    selectedNote: PropTypes.array
 }
 
 export default GenerateNote;

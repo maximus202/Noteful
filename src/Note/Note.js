@@ -3,6 +3,8 @@ import Header from '../Header/Header';
 import GenerateNote from '../GenerateNote/GenerateNote';
 import { withRouter } from 'react-router';
 import { NoteContext } from '../NoteContext/NoteContext';
+import GenerateNoteError from '../ErrorBoundaries/GenerateNoteError';
+import PropTypes from 'prop-types';
 
 class Note extends React.Component {
     render() {
@@ -17,9 +19,11 @@ class Note extends React.Component {
                             <header>
                                 <Header />
                             </header>
-                            <main>
-                                <GenerateNote selectedNote={selectedNote} />
-                            </main>
+                            <GenerateNoteError>
+                                <main>
+                                    <GenerateNote selectedNote={selectedNote} />
+                                </main>
+                            </GenerateNoteError>
                             <aside>
                                 <button onClick={this.props.onClickGoBack}>
                                     Go back
@@ -35,5 +39,10 @@ class Note extends React.Component {
         )
     }
 }
+
+Note.propTypes = {
+    match: PropTypes.object,
+    onClickGoBack: PropTypes.func
+};
 
 export default withRouter(Note);

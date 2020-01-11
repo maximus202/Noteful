@@ -6,7 +6,8 @@ import AddNote from '../AddNote/AddNote';
 import GenerateFolderMenu from '../GenerateFolderMenu/GenerateFolderMenu';
 import AddFolder from '../AddFolder/AddFolder';
 import { NoteContext } from '../NoteContext/NoteContext';
-import { Route } from 'react-router-dom';
+import AppLoadError from '../ErrorBoundaries/AppLoadError';
+import PropTypes from 'prop-types';
 
 class Main extends React.Component {
     render() {
@@ -18,34 +19,39 @@ class Main extends React.Component {
                             <header>
                                 <Header />
                             </header>
-                            <main>
-                                {value.notes.map(note =>
-                                    < GenerateNoteList
-                                        note={note}
-                                        key={note.id} />
-                                )}
-                                <AddNote
-                                    onClickAddNote={() => {
-                                        this.props.history.push('/addnote')
+                            <AppLoadError>
+                                <main>
+                                    {value.notes.map(note =>
+                                        < GenerateNoteList
+                                            note={note}
+                                            key={note.id} />
+                                    )}
+                                    <AddNote
+                                        onClickAddNote={() => {
+                                            this.props.history.push('/addnote')
+                                        }} />
+                                </main>
+                                <aside>
+                                    {value.folders.map(folder =>
+                                        <GenerateFolderMenu
+                                            folder={folder}
+                                            key={folder.id} />
+                                    )}
+                                    <AddFolder onClickAddFolder={() => {
+                                        this.props.history.push('/addfolder')
                                     }} />
-                            </main>
-                            <aside>
-                                {value.folders.map(folder =>
-                                    <GenerateFolderMenu
-                                        folder={folder}
-                                        key={folder.id} />
-                                )}
-                                <AddFolder onClickAddFolder={() => {
-                                    console.log('hello')
-                                    this.props.history.push('/addfolder')
-                                }} />
-                            </aside>
+                                </aside>
+                            </AppLoadError>
                         </>
                     )
                 }}
             </NoteContext.Consumer>
         )
     }
+}
+
+Main.propTypes = {
+    history: PropTypes.object
 }
 
 export default Main;
