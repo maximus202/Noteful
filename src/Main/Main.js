@@ -51,7 +51,7 @@ class Main extends React.Component {
 }
 
 Main.propTypes = {
-    history: PropTypes.object
+    history: PropTypes.object.isRequired
 }
 
 export default Main;

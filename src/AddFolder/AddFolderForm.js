@@ -47,7 +47,7 @@ class AddFolderForm extends React.Component {
                     folderName: responseJson.name
                 })
             })
-            .then(window.location.replace('/'))
+            //.then(window.location.replace('/'))
             .catch(error => {
                 console.error({ error })
             })
@@ -64,7 +64,7 @@ class AddFolderForm extends React.Component {
                         <fieldset>
                             <legend>Add New Folder</legend>
                             Folder Name:
-                        <input type='text' name='foldername' ref={this.folderNameInput} value={this.state.folderName} onChange={this.handleChange} />
+                        <input type='text' name='foldername' ref={this.folderNameInput} value={this.state.folderName} onChange={this.handleChange} required />
                             <button type='submit'>Create</button>
                         </fieldset>
                     </form>
@@ -78,7 +78,7 @@ class AddFolderForm extends React.Component {
 }
 
 AddFolderForm.propTypes = {
-    onClickGoBack: PropTypes.func
+    onClickGoBack: PropTypes.func.isRequired
 }
 
 export default withRouter(AddFolderForm);

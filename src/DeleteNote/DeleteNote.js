@@ -36,7 +36,7 @@ class DeleteNote extends React.Component {
 }
 
 DeleteNote.propTypes = {
-    note: PropTypes.object
+    note: PropTypes.object.isRequired
 }
 
 export default DeleteNote;

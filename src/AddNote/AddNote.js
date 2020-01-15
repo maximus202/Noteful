@@ -11,7 +11,7 @@ class AddNote extends React.Component {
 }
 
 AddNote.propTypes = {
-    onClickAddNote: PropTypes.func
+    onClickAddNote: PropTypes.func.isRequired
 }
 
 export default withRouter(AddNote);

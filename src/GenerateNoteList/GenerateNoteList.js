@@ -16,7 +16,7 @@ class GenerateNoteList extends React.Component {
 }
 
 GenerateNoteList.propTypes = {
-    note: PropTypes.object
+    note: PropTypes.object.isRequired
 }
 
 export default GenerateNoteList;

@@ -41,8 +41,8 @@ class Note extends React.Component {
 }
 
 Note.propTypes = {
-    match: PropTypes.object,
-    onClickGoBack: PropTypes.func
+    match: PropTypes.object.isRequired,
+    onClickGoBack: PropTypes.func.isRequired
 };
 
 export default withRouter(Note);

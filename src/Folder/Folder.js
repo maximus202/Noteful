@@ -50,8 +50,8 @@ class Folder extends React.Component {
 }
 
 Folder.propTypes = {
-    match: PropTypes.object,
-    history: PropTypes.object
+    match: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
 };
 
 export default withRouter(Folder);

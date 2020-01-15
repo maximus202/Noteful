@@ -93,7 +93,7 @@ class AddNoteForm extends React.Component {
                                         {value.folders.map((folder) => {
                                             return (
                                                 <div key={folder.id}>
-                                                    < input type='radio' name='folder' id={folder.id} value={folder.name} onChange={this.handleFolderIdChange} ></input>
+                                                    < input type='radio' name='folder' id={folder.id} value={folder.name} onChange={this.handleFolderIdChange} required ></input>
                                                     <label htmlFor={folder.name}>{folder.name}</label>
                                                 </div>
                                             )
@@ -118,7 +118,7 @@ class AddNoteForm extends React.Component {
 }
 
 AddNoteForm.propTypes = {
-    onClickGoBack: PropTypes.func
+    onClickGoBack: PropTypes.func.isRequired
 }
 
 export default AddNoteForm;

@@ -11,7 +11,7 @@ class AddFolder extends React.Component {
 }
 
 AddFolder.propTypes = {
-    onClickAddFolder: PropTypes.func
+    onClickAddFolder: PropTypes.func.isRequired
 }
 
 export default withRouter(AddFolder);

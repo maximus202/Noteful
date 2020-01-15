@@ -15,7 +15,7 @@ class GenerateNote extends React.Component {
 }
 
 GenerateNote.propTypes = {
-    selectedNote: PropTypes.array
+    selectedNote: PropTypes.array.isRequired
 }
 
 export default GenerateNote;
