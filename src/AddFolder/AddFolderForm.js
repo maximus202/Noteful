@@ -47,7 +47,7 @@ class AddFolderForm extends React.Component {
                     folderName: responseJson.name
                 })
             })
-            //.then(window.location.replace('/'))
+            .then(window.location.replace('/'))
             .catch(error => {
                 console.error({ error })
             })
