@@ -15,8 +15,7 @@ class AddFolderForm extends React.Component {
                 </header>
                 <main>
                     <form onSubmit={(e) => {
-                        this.context.handleSubmitNewFolder(e)
-                            .then(() => this.props.history.push('/'))
+                        this.context.handleSubmitNewFolder(e, this.props.history)
                     }}>
                         <fieldset>
                             <legend>Add New Folder</legend>

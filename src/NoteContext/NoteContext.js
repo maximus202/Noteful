@@ -29,7 +29,7 @@ export class NoteProvider extends React.Component {
         })
     };
 
-    handleSubmitNewFolder = (e) => {
+    handleSubmitNewFolder = (e, history = []) => {
         e.preventDefault();
         const folderName = this.state.folderName;
         const url = 'http://localhost:9090/folders';
@@ -57,7 +57,7 @@ export class NoteProvider extends React.Component {
                     folderName: responseJson.name
                 })
             })
-            .then(() => this.props.history.push('/'))
+            .then(() => history.push('/'))
             .catch(error => {
                 console.error({ error })
             })
