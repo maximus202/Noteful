@@ -8,7 +8,59 @@ export class NoteProvider extends React.Component {
         this.state = {
             folders: [],
             notes: [],
+            folderName: '',
+            handleDeleteNote: this.handleDeleteNote,
+            handleChange: this.handleChange,
+            handleSubmitNewFolder: this.handleSubmitNewFolder
         }
+    }
+
+    handleDeleteNote = (noteId) => {
+        const newNotes = this.state.notes.filter(note =>
+            note.id !== noteId)
+        this.setState({
+            notes: newNotes
+        })
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            folderName: event.target.value
+        })
+    };
+
+    handleSubmitNewFolder = (e) => {
+        e.preventDefault();
+        const folderName = this.state.folderName;
+        const url = 'http://localhost:9090/folders';
+        const data = {
+            'name': folderName
+        };
+        const otherParams = {
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            method: 'POST',
+        };
+
+        return fetch(url, otherParams)
+            .then((response) => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    return response.json().then(responseJson => Promise.reject(new Error(responseJson)))
+                }
+            })
+            .then(responseJson => {
+                this.setState({
+                    folderName: responseJson.name
+                })
+            })
+            .then(() => this.props.history.push('/'))
+            .catch(error => {
+                console.error({ error })
+            })
     }
 
     componentDidMount() {
@@ -40,17 +92,7 @@ export class NoteProvider extends React.Component {
 
     render() {
         return (
-            < NoteContext.Provider value={{
-                folders: this.state.folders,
-                notes: this.state.notes,
-                handleDeleteNote: (noteId) => {
-                    const newNotes = this.state.notes.filter(note =>
-                        note.id !== noteId)
-                    this.setState({
-                        notes: newNotes
-                    })
-                }
-            }}>
+            < NoteContext.Provider value={this.state}>
                 {this.props.children}
             </NoteContext.Provider >
         )
