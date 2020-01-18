@@ -36,7 +36,7 @@ class App extends React.Component {
           <Route
             exact path='/addnote'
             render={({ history }) => {
-              return <AddNoteForm onClickGoBack={() => history.goBack()} />
+              return <AddNoteForm history={history} onClickGoBack={() => history.goBack()} />
             }}>
           </Route>
         </NoteProvider>

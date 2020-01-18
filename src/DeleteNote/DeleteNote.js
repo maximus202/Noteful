@@ -10,7 +10,7 @@ class DeleteNote extends React.Component {
                 {(value) => {
                     return (
                         <>
-                            <button type="button" onClick={(e) => value.handleClickDelete(this.props.note, this.props.history)}>Delete Note</button>
+                            <button type="button" onClick={(e) => value.handleClickDelete(this.props.note)}>Delete Note</button>
                         </>
                     )
                 }}

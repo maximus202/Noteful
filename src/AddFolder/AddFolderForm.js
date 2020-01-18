@@ -5,30 +5,34 @@ import PropTypes from 'prop-types';
 import { NoteContext } from '../NoteContext/NoteContext';
 
 class AddFolderForm extends React.Component {
-    static contextType = NoteContext;
-
     render() {
         return (
-            <>
-                <header>
-                    <Header />
-                </header>
-                <main>
-                    <form onSubmit={(e) => {
-                        this.context.handleSubmitNewFolder(e, this.props.history)
-                    }}>
-                        <fieldset>
-                            <legend>Add New Folder</legend>
-                            Folder Name:
-                        <input type='text' name='foldername' value={this.context.folderName} onChange={this.context.handleChange} required />
-                            <button type='submit'>Create</button>
-                        </fieldset>
-                    </form>
-                </main>
-                <aside>
-                    <button type='button' onClick={this.props.onClickGoBack}>Go back</button>
-                </aside>
-            </>
+            <NoteContext.Consumer>
+                {(value) => {
+                    return (
+                        <>
+                            <header>
+                                <Header />
+                            </header>
+                            <main>
+                                <form onSubmit={(e) => {
+                                    value.handleSubmitNewFolder(e, this.props.history)
+                                }}>
+                                    <fieldset>
+                                        <legend>Add New Folder</legend>
+                                        Folder Name:
+                        <input type='text' name='foldername' value={value.folderName} onChange={value.handleChange} required />
+                                        <button type='submit'>Create</button>
+                                    </fieldset>
+                                </form>
+                            </main>
+                            <aside>
+                                <button type='button' onClick={this.props.onClickGoBack}>Go back</button>
+                            </aside>
+                        </>
+                    )
+                }}
+            </NoteContext.Consumer>
         )
     }
 }

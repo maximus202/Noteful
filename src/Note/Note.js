@@ -13,7 +13,6 @@ class Note extends React.Component {
                 {(value) => {
                     const noteId = this.props.match.params.noteId;
                     const selectedNote = value.notes.filter(note => note.id === noteId);
-                    const selectedNoteFolderId = selectedNote[0].id
                     return (
                         <>
                             <header>
@@ -21,7 +20,8 @@ class Note extends React.Component {
                             </header>
                             <GenerateNoteError>
                                 <main>
-                                    <GenerateNote selectedNote={selectedNote} />
+                                    <GenerateNote
+                                        selectedNote={selectedNote} />
                                 </main>
                             </GenerateNoteError>
                             <aside>
