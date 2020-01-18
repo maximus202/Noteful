@@ -11,7 +11,8 @@ export class NoteProvider extends React.Component {
             folderName: '',
             handleDeleteNote: this.handleDeleteNote,
             handleChange: this.handleChange,
-            handleSubmitNewFolder: this.handleSubmitNewFolder
+            handleSubmitNewFolder: this.handleSubmitNewFolder,
+            handleClickDelete: this.handleClickDelete
         }
     }
 
@@ -58,6 +59,29 @@ export class NoteProvider extends React.Component {
                 })
             })
             .then(() => history.push('/'))
+            .catch(error => {
+                console.error({ error })
+            })
+    }
+
+    handleClickDelete = (e, history = []) => {
+        const noteId = e.id;
+        fetch(`http://localhost:9090/notes/${noteId}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json'
+            },
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    return response.json().then(responseJson => Promise.reject(new Error(responseJson)))
+                }
+            })
+            .then(responseJson => {
+                this.handleDeleteNote(noteId)
+            })
             .catch(error => {
                 console.error({ error })
             })
