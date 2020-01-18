@@ -1,5 +1,5 @@
 import React from 'react';
-
+//exports
 export const NoteContext = React.createContext()
 
 export class NoteProvider extends React.Component {
@@ -54,7 +54,7 @@ export class NoteProvider extends React.Component {
             })
             .then(responseJson => {
                 this.setState({
-                    folderName: responseJson.name
+                    folders: [...this.state.folders, responseJson]
                 })
             })
             .then(() => history.push('/'))
