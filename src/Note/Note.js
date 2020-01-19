@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 import { NoteContext } from '../NoteContext/NoteContext';
 import GenerateNoteError from '../ErrorBoundaries/GenerateNoteError';
 import PropTypes from 'prop-types';
+import DeleteNote from '../DeleteNote/DeleteNote';
 
 class Note extends React.Component {
     render() {
@@ -28,6 +29,7 @@ class Note extends React.Component {
                                 <button onClick={this.props.onClickGoBack}>
                                     Go back
                     </button>
+                                <DeleteNote note={selectedNote[0]} />
                                 <div>
                                     Folder: {value.folders.filter(folder => folder.id == selectedNote[0].folderId)[0].name}
                                 </div>

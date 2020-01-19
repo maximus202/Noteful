@@ -91,7 +91,7 @@ export class NoteProvider extends React.Component {
     }
 
     //DELETE NOTE
-    handleClickDelete = (e) => {
+    handleClickDelete = (e, history = []) => {
         const noteId = e.id;
         fetch(`http://localhost:9090/notes/${noteId}`, {
             method: 'DELETE',
@@ -106,9 +106,11 @@ export class NoteProvider extends React.Component {
                     return response.json().then(responseJson => Promise.reject(new Error(responseJson)))
                 }
             })
+            .then(() => history.push('/'))
             .then(() => {
                 this.handleDeleteNote(noteId)
             })
+
             .catch(error => {
                 console.error({ error })
             })
@@ -120,11 +122,13 @@ export class NoteProvider extends React.Component {
         const noteTitleInput = this.state.noteTitle;
         const folderInput = this.state.folderId;
         const contentInput = this.state.content;
+        const modifiedDate = new Date;
         const url = 'http://localhost:9090/notes';
         const data = {
             'name': noteTitleInput,
             'folderId': folderInput,
             'content': contentInput,
+            'modified': modifiedDate,
         };
         const otherParams = {
             headers: {
