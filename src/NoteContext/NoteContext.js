@@ -25,7 +25,7 @@ export class NoteProvider extends React.Component {
 
     handleDeleteNote = (noteId) => {
         const newNotes = this.state.notes.filter(note =>
-            note.id !== noteId)
+            note.sid !== noteId)
         this.setState({
             notes: newNotes
         })
@@ -59,7 +59,7 @@ export class NoteProvider extends React.Component {
     handleSubmitNewFolder = (e, history = []) => {
         e.preventDefault();
         const folderName = this.state.folderName;
-        const url = 'http://localhost:9090/folders';
+        const url = 'http://localhost:8000/api/folders';
         const data = {
             'name': folderName
         };
@@ -92,8 +92,8 @@ export class NoteProvider extends React.Component {
 
     //DELETE NOTE
     handleClickDelete = (e, history = []) => {
-        const noteId = e.id;
-        fetch(`http://localhost:9090/notes/${noteId}`, {
+        const noteId = e.sid;
+        fetch(`http://localhost:8000/api/notes/${noteId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -101,7 +101,7 @@ export class NoteProvider extends React.Component {
         })
             .then((response) => {
                 if (response.ok) {
-                    return response.json()
+                    //do nothing
                 } else {
                     return response.json().then(responseJson => Promise.reject(new Error(responseJson)))
                 }
@@ -119,16 +119,16 @@ export class NoteProvider extends React.Component {
     //NEW NOTE
     handleSubmitNote = (e, history) => {
         e.preventDefault();
+        console.log(this.state)
         const noteTitleInput = this.state.noteTitle;
         const folderInput = this.state.folderId;
         const contentInput = this.state.content;
         const modifiedDate = new Date;
-        const url = 'http://localhost:9090/notes';
+        const url = 'http://localhost:8000/api/notes';
         const data = {
-            'name': noteTitleInput,
-            'folderId': folderInput,
+            'note_title': noteTitleInput,
+            'folder_id': folderInput,
             'content': contentInput,
-            'modified': modifiedDate,
         };
         const otherParams = {
             headers: {
@@ -158,7 +158,7 @@ export class NoteProvider extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:9090/folders')
+        fetch('http://localhost:8000/api/folders')
             .then((response) => {
                 if (response.ok) {
                     return response.json()
@@ -171,7 +171,7 @@ export class NoteProvider extends React.Component {
                 })
             )
 
-            .then(() => fetch('http://localhost:9090/notes')).then((response) => {
+            .then(() => fetch('http://localhost:8000/api/notes')).then((response) => {
                 if (response.ok) {
                     return response.json()
                 } else {

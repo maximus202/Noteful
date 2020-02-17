@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 class GenerateNoteList extends React.Component {
     render() {
         return (
-            <div key={this.props.note.id}>
-                <p><Link to={`/note/${this.props.note.id}`}>{this.props.note.name}</Link></p>
+            <div key={this.props.note.sid}>
+                <p><Link to={`/note/${this.props.note.sid}`}>{this.props.note.note_title}</Link></p>
                 <p>Last modified on: {this.props.note.modified}</p>
                 <DeleteNote note={this.props.note} />
             </div>

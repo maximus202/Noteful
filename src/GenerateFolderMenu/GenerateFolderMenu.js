@@ -8,7 +8,7 @@ class GenerateFolderMenu extends React.Component {
         return (
             <>
                 <button className='folder_button'>
-                    <NavLink activeClassName="active" to={`/folder/${this.props.folder.id}`}>{this.props.folder.name}</NavLink>
+                    <NavLink activeClassName="active" to={`/folder/${this.props.folder.id}`}>{this.props.folder.folder_name}</NavLink>
                 </button>
             </>
         )

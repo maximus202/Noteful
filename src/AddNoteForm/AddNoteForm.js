@@ -23,8 +23,8 @@ class AddNoteForm extends React.Component {
                                         {value.folders.map((folder) => {
                                             return (
                                                 <div key={folder.id}>
-                                                    < input type='radio' name='folder' id={folder.id} value={folder.name} onChange={value.handleFolderIdChange} required ></input>
-                                                    <label htmlFor={folder.name}>{folder.name}</label>
+                                                    < input type='radio' name='folder' id={folder.id} value={folder.folder_name} onChange={value.handleFolderIdChange} required ></input>
+                                                    <label htmlFor={folder.folder_name}>{folder.folder_name}</label>
                                                 </div>
                                             )
                                         })}

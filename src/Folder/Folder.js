@@ -22,8 +22,9 @@ class Folder extends React.Component {
                             </header>
                             <main>
                                 {value.notes.map(note => {
-                                    if (folderId === note.folderId) {
-                                        return <GenerateNoteList note={note} key={note.id} />
+                                    if (folderId == note.folder_id) {
+                                        console.log(note)
+                                        return <GenerateNoteList note={note} key={note.sid} />
                                     }
                                 }
                                 )}

@@ -13,7 +13,9 @@ class Note extends React.Component {
             <NoteContext.Consumer>
                 {(value) => {
                     const noteId = this.props.match.params.noteId;
-                    const selectedNote = value.notes.filter(note => note.id === noteId);
+                    const selectedNote = value.notes.filter(note => note.sid == noteId);
+                    console.log(value.notes.filter(note => note.sid == noteId))
+                    console.log(value.folders.filter(folder => folder.id == selectedNote[0].folder_id)[0].folder_name)
                     return (
                         <>
                             <header>
@@ -31,7 +33,7 @@ class Note extends React.Component {
                     </button>
                                 <DeleteNote note={selectedNote[0]} />
                                 <div>
-                                    Folder: {value.folders.filter(folder => folder.id == selectedNote[0].folderId)[0].name}
+                                    Folder: {value.folders.filter(folder => folder.id == selectedNote[0].folder_id)[0].folder_name}
                                 </div>
                             </aside>
                         </>

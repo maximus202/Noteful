@@ -24,7 +24,7 @@ class Main extends React.Component {
                                     {value.notes.map(note =>
                                         < GenerateNoteList
                                             note={note}
-                                            key={note.id} />
+                                            key={note.sid} />
                                     )}
                                     <AddNote
                                         onClickAddNote={() => {
