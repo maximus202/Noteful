@@ -61,7 +61,7 @@ export class NoteProvider extends React.Component {
         const folderName = this.state.folderName;
         const url = 'https://guarded-spire-51015.herokuapp.com/api/folders';
         const data = {
-            'name': folderName
+            'folder_name': folderName
         };
         const otherParams = {
             headers: {
