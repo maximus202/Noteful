@@ -8,7 +8,6 @@ class GenerateNoteList extends React.Component {
         return (
             <div key={this.props.note.sid}>
                 <p><Link to={`/note/${this.props.note.sid}`}>{this.props.note.note_title}</Link></p>
-                <p>Last modified on: {this.props.note.modified}</p>
                 <DeleteNote note={this.props.note} />
             </div>
         )
