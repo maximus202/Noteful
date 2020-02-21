@@ -1,0 +1,14 @@
+{
+    "version": 2,
+    "alias": "max-noteful-app",
+    "name": "noteful",
+    "routes": [
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "/.*",
+            "dest": "/index.html"
+        }
+    ]
+}

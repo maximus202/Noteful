@@ -59,7 +59,7 @@ export class NoteProvider extends React.Component {
     handleSubmitNewFolder = (e, history = []) => {
         e.preventDefault();
         const folderName = this.state.folderName;
-        const url = 'http://localhost:8000/api/folders';
+        const url = 'https://guarded-spire-51015.herokuapp.com/api/folders';
         const data = {
             'name': folderName
         };
@@ -93,7 +93,7 @@ export class NoteProvider extends React.Component {
     //DELETE NOTE
     handleClickDelete = (e, history = []) => {
         const noteId = e.sid;
-        fetch(`http://localhost:8000/api/notes/${noteId}`, {
+        fetch(`https://guarded-spire-51015.herokuapp.com/api/notes/${noteId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -124,7 +124,7 @@ export class NoteProvider extends React.Component {
         const folderInput = this.state.folderId;
         const contentInput = this.state.content;
         const modifiedDate = new Date;
-        const url = 'http://localhost:8000/api/notes';
+        const url = 'https://guarded-spire-51015.herokuapp.com/api/notes';
         const data = {
             'note_title': noteTitleInput,
             'folder_id': folderInput,
@@ -158,7 +158,7 @@ export class NoteProvider extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8000/api/folders')
+        fetch('https://guarded-spire-51015.herokuapp.com/api/folders')
             .then((response) => {
                 if (response.ok) {
                     return response.json()
@@ -171,7 +171,7 @@ export class NoteProvider extends React.Component {
                 })
             )
 
-            .then(() => fetch('http://localhost:8000/api/notes')).then((response) => {
+            .then(() => fetch('https://guarded-spire-51015.herokuapp.com/api/notes')).then((response) => {
                 if (response.ok) {
                     return response.json()
                 } else {
